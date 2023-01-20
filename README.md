@@ -112,7 +112,7 @@ Reminder: answer the following questions [here](https://forms.gle/6SM7cu4cYhNsRv
 | Question | Who is going to **listen for UDP datagrams** and what should happen when a datagram is received?                                                                        |
 |          | L'auditeur écoute les datagrammes UDP. Il ne répond pas, mais il doit garder une trace des musiciens actifs. Afin de pouvoir les retransmettres au client.              |
 | Question | What **payload** should we put in the UDP datagrams?                                                                                                                    |
-|          | Le son de l'instrument jouer par le musiciens envoyant le datagramme.                                                                                                   |
+|          | Le son de l'instrument joué par le musiciens envoyant le datagramme ainsi que son uuid.                                                                                 |
 | Question | What **data structures** do we need in the UDP sender and receiver? When will we update these data structures? When will we query these data structures?                |
 |          | Sender/Receiver : un tableau associatif entre un instrument et son son. Pas de mise à jour à faire ici.<br/> Receiver : la lise des musiciens (UID, instrument, timer)  |
 

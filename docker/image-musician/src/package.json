@@ -1,0 +1,15 @@
+{
+  "name": "musician",
+  "version": "1.0.0",
+  "description": "implementation for a musician",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Laetitia Guidetti and Cedric Centeno",
+  "license": "ISC",
+  "dependencies": {
+    "dgram": "^1.0.1",
+    "uuid": "^9.0.0"
+  }
+}
