@@ -1,20 +1,24 @@
 
 
-var protocol = require('./musician-protocol');
-
-var dgram = require('dgram');
-
-var socket = dgram.createSocket('udp4');
-
-var uuid = require('uuid');
+const protocol = require('./musician-protocol');
 
 /*
- * Let's define a javascript class for our thermometer. The constructor accepts
- * a location, an initial temperature and the amplitude of temperature variation
- * at every iteration
+Utilisation du module standard de node.js
  */
+const dgram = require('dgram');
 
-var sound = {
+/*
+Création du socket UDP
+ */
+const socket = dgram.createSocket('udp4');
+
+// Package utilisé pour générer l'uuid
+const uuid = require('uuid');
+
+/*
+Tableau associatif pour associer un instrument à un son
+ */
+const sound = {
     piano : 'ti-ta-ti',
     trumpet : 'pouet',
     flute : 'trulu',
@@ -27,21 +31,33 @@ function Musician(instrument) {
     this.uuid = uuid.v4();
 
     Musician.prototype.update = function() {
-
-        var music = {
+		
+        /*
+        Information à envoie
+         */
+        const music = {
             uuid: this.uuid,
             sound: this.sound
         };
-        var payload = JSON.stringify(music);
+		
+		/*
+        Sérialisation des informations dans un string JSON
+         */
+        const payload = JSON.stringify(music);
 
-        message = new Buffer(payload);
+		/*
+        Encapsulation du payload dans un datagrame et envoie à l'adresse multicast
+         */
+        const message = new Buffer(payload);
         socket.send(message, 0, message.length, protocol.PROTOCOL_PORT, protocol.PROTOCOL_MULTICAST_ADDRESS, function(err, bytes) {
             console.log("Sending payload: " + payload + " via port " + socket.address().port);
         });
 
     }
 
-
+    /*
+     Permet l'envoi du datagrame toutes les 1000ms
+     */
     setInterval(this.update.bind(this), 1000);
 
 }

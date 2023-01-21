@@ -118,41 +118,41 @@ Reminder: answer the following questions [here](https://forms.gle/6SM7cu4cYhNsRv
 
 ## Task 2: implement a "musician" Node.js application
 
-| #        | Topic                                                                                    |
-| -------- |------------------------------------------------------------------------------------------|
-| Question | In a JavaScript program, if we have an object, how can we **serialize it in JSON**?      |
-|          | En utilisant la fonction JSON.stringify()                                                |
-| Question | What is **npm**?                                                                         |
-|          | npm (Node Package Manager) est un gestionnaire de paquets pour JavaScript.               |
-| Question | What is the `npm install` command?                                                       |
-|          | Cette commande permet d'installer automatiquement toutes les dépendances pour un projet. |
-| Question | How can we use the `https://www.npmjs.com/` web site?                                    |
-|          | Il permet de chercher des paquages et leur documentation.                                |
-| Question | In JavaScript, how can we **generate a UUID** compliant with RFC4122?                    |
-|          | En utilisant le paquage `https://www.npmjs.com/package/uuid`.                            |
-| Question | In Node.js, how can we execute a function on a **periodic** basis?                       |
-|          | En utilisant setInterval()                                                               |
-| Question | In Node.js, how can we **emit UDP datagrams**?                                           |
-|          | Utiliser dgram                                                                           |
-| Question | In Node.js, how can we **access the command line arguments**?                            |
-|          | Utiliser process.argv                                                                                |
+| #        | Topic                                                                                                                                                                                                                           |
+| -------- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Question | In a JavaScript program, if we have an object, how can we **serialize it in JSON**?                                                                                                                                             |
+|          | En utilisant la fonction JSON.stringify()                                                                                                                                                                                       |
+| Question | What is **npm**?                                                                                                                                                                                                                |
+|          | npm (Node Package Manager) est un gestionnaire de paquets pour JavaScript.                                                                                                                                                      |
+| Question | What is the `npm install` command?                                                                                                                                                                                              |
+|          | Cette commande permet d'installer automatiquement toutes les dépendances pour un projet. Cette commande permet également de télécharger un paquage précis.                                                                                                                                            |
+| Question | How can we use the `https://www.npmjs.com/` web site?                                                                                                                                                                           |
+|          | Il permet de chercher des paquages et leur documentation.                                                                                                                                                                       |
+| Question | In JavaScript, how can we **generate a UUID** compliant with RFC4122?                                                                                                                                                           |
+|          | En utilisant le paquage `https://www.npmjs.com/package/uuid`.                                                                                                                                                                   |
+| Question | In Node.js, how can we execute a function on a **periodic** basis?                                                                                                                                                              |
+|          | En utilisant setInterval() qui permet de lancer une méthode toutes les x ms spécifiés.                                                                                                                                                                                                      |
+| Question | In Node.js, how can we **emit UDP datagrams**?                                                                                                                                                                                  |
+|          | Utiliser dgram, puis en créant un socket UDP avec dgram.createSocket('udp4'). Depuis le socket, on peut envoyer un datagtame via la méthode send().                                                                                                                                                                                                                |
+| Question | In Node.js, how can we **access the command line arguments**?                                                                                                                                                                   |
+|          | Utiliser process.argv qui est un tableau contenant les arguments de la ligne de commande. Les deux premier éléments possèdent des informations sur des paths. Pour accéder à notre instrument il faut utiliser process.argv[2]. |                                                                         |
 
 ## Task 3: package the "musician" app in a Docker image
 
-| #        | Topic                                                                               |
-| -------- | ----------------------------------------------------------------------------------- |
-| Question | How do we **define and build our own Docker image**?                                |
-|          | _Enter your response here..._                                                       |
-| Question | How can we use the `ENTRYPOINT` statement in our Dockerfile?                        |
-|          | _Enter your response here..._                                                       |
-| Question | After building our Docker image, how do we use it to **run containers**?            |
-|          | _Enter your response here..._                                                       |
-| Question | How do we get the list of all **running containers**?                               |
-|          | _Enter your response here..._                                                       |
-| Question | How do we **stop** and **kill** one running container?                              |
-|          | _Enter your response here..._                                                       |
-| Question | How can we check that our running containers are effectively sending UDP datagrams? |
-|          | _Enter your response here..._                                                       |
+| #        | Topic                                                                                                                                                                                                                                                          |
+| -------- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Question | How do we **define and build our own Docker image**?                                                                                                                                                                                                           |
+|          | Il faut écrire un Dockerfile contenant la configuration voulue, puis dans le dossier de ce fichier utiliser la commande `docker build -t <nom> .` <br/> Pour créer l'imagine du musician, nous avons utilisé `docker build -t udp_centeno_guidetti/musician .` |
+| Question | How can we use the `ENTRYPOINT` statement in our Dockerfile?                                                                                                                                                                                                   |
+|          | _Enter your response here..._                                                                                                                                                                                                                                  |
+| Question | After building our Docker image, how do we use it to **run containers**?                                                                                                                                                                                       |
+|          | En entrant la commande `docker run <nom_image>`<br/>Pour lancer un contenaire d'un musicien, nous avons utilisé `docker run -d udp_centeno_guidetti/musician <instrument>`                                                                                                                                                                                                                                   |
+| Question | How do we get the list of all **running containers**?                                                                                                                                                                                                          |
+|          | En entrant la commande `docker ps`                                                                                                                                                                                                                                  |
+| Question | How do we **stop** and **kill** one running container?                                                                                                                                                                                                         |
+|          | On peut stoper avec `docker stop <nom_container>` et le kill avec  `docker kill <nom_container>`                                                                                                                                                                                                                                   |
+| Question | How can we check that our running containers are effectively sending UDP datagrams?                                                                                                                                                                            |
+|          | Il est possible de tester en utilisant wireshark.                                                                                                                                                                                                                                  |
 
 ## Task 4: implement an "auditor" Node.js application
 
