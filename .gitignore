@@ -2,3 +2,4 @@
 .idea/
 
 docker/image-musician/src/node_modules/
+docker/image-auditor/src/node_modules/

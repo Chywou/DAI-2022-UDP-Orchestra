@@ -6,25 +6,59 @@ Utilisation du module standard de node.js
  */
 const dgram = require('dgram');
 
-// Package utilisé pour générer l'uuid
-const uuid = require('uuid');
+const dayjs = require('dayjs')
+
+const net = require('net')
 
 /*
 Création du socket UDP
  */
-const socket = dgram.createSocket ('udp4');
+const socketUDP = dgram.createSocket ('udp4');
 
-// Ecoute sur multicast afin de récupérer les datagrammes des musiciens
-socket.bind(protocol.PROTOCOL_PORT , function() {
+const instrument = {
+	'ti-ta-ti' : 'piano',
+	'pouet' : 'trumpet',
+	'trulu' : 'flute',
+	'gzi-gzi' : 'violin',
+	'boum-boum' : 'drum'
+}
+
+var musicians = new Map();
+
+// Ecoute sur le multicast afin de récupérer les datagrammes des musiciens
+socketUDP.bind(protocol.PROTOCOL_PORT_UDP, () => {
 		console.log("Joining multicast group");
-		socket.addMembership(protocol.PROTOCOL_MULTICAST_ADDRESS);
+		socketUDP.addMembership(protocol.PROTOCOL_MULTICAST_ADDRESS);
 });
 
-// fonction appelée quand un datagramme est reçu
-socket.on('message', function(msg, source) {
-	console.log("Data has arrived: " + msg + ". Source IP: " + source.address +
-				". Source port: " + source.port);
+// Fonction appelée quand un datagramme est reçu
+socketUDP.on('message', (msg, source) => {
+	let temp = JSON.parse(msg.toString());
+
+	// Information à stocker
+	let musician = {
+		uuid : temp.uuid,
+		instrument: instrument[temp.sound],
+		activeSince : dayjs().format('YYYY-MM-DD HH:mm:ss.SSS')
+	};
+
+	console.log("Data has arrived: " + msg + ". Source IP: " + source.address + ". Source port: " + source.port);
+	musicians.set(temp.uuid, musician);
 });
 
-const music = JSON.parse(msg);
-let date = new Date().toJSON();
+const serverTCP = net.createServer();
+serverTCP.listen(protocol.PROTOCOL_PORT_TCP);
+
+serverTCP.on('connection', (socket) => {
+	const currentTime = dayjs();
+	musicians.forEach((value, key) => {
+		console.log(value.activeSince);
+		if(currentTime.diff(value.activeSince) > protocol.ACTIVE_TIME) {
+			musicians.delete(key);
+		}
+	});
+	socket.write(JSON.stringify(Array.from(musicians.values())));
+	socket.destroy();
+});
+
+

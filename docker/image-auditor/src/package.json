@@ -1,0 +1,16 @@
+{
+  "name": "auditor",
+  "version": "1.0.0",
+  "description": "implementation for an auditor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Laetitia Guidetti and Cedric Centeno",
+  "license": "ISC",
+  "dependencies": {
+    "dayjs": "^1.11.7",
+    "dgram": "^1.0.1",
+    "uuid": "^9.0.0"
+  }
+}

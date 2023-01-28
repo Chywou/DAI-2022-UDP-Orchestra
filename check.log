@@ -1,2 +1,43 @@
 origin	https://github.com/Chywou/DAI-2022-UDP-Orchestra (fetch)
 origin	https://github.com/Chywou/DAI-2022-UDP-Orchestra (push)
+Starting auditor container "9d08ea0199a55825d27ff58a63e4a547e967d572ec3370930f27958d4a6331a0"
+Starting auditor container "760ab28b106a8ad647f7ac2899fa8db45770c2d3539a93b8386ea41f82f8dc99"
+Starting auditor container "f399df25b6b92f037486d9192a74d5f1d824e89018d5dc7acc8776f4ffcdec61"
+Starting auditor container "1127348de6893785b7b5f7683dad683f8adc96f2b3139b460cc6df477c48e0be"
+Starting auditor container "81d6c8d7faf3337e6abd8c365f73b17eb3d9185b135a8ee3999ef3566826d7e8"
+Starting auditor container "ca31d4611a7c51d37ca48fa14ceabc3fcb27e5ddc4caa579fe7a779cbc20e521"
+Starting auditor container "49880f2f76d8fae20b2ae5a59a28b4079e11099c2018167e991d1a1733e0824a"
+Starting auditor container "7271726f93a5051ef1caf9a6f2921cc3405637f6a4942040c29d273366e43ad6"
+Starting auditor container "701c73a912199c519419cc31203fd5092c164ffdb4c4919289aeaef897911646"
+Starting auditor container "c43483372b469bf89ebe9254cb342dc15b29c2b0d97e8362edf44bbcf3aacf14"
+Starting auditor container "266c7455d860ba6d9e0633410824a845ed5fada34cdc7ab58ea492078fcce025"
+11 containers have been started.
+c43483372b469bf89ebe9254cb342dc15b29c2b0d97e8362edf44bbcf3aacf14 : /opt/app/musician.js,trumpet
+760ab28b106a8ad647f7ac2899fa8db45770c2d3539a93b8386ea41f82f8dc99 : /opt/app/musician.js,trumpet
+ca31d4611a7c51d37ca48fa14ceabc3fcb27e5ddc4caa579fe7a779cbc20e521 : /opt/app/musician.js,flute
+7271726f93a5051ef1caf9a6f2921cc3405637f6a4942040c29d273366e43ad6 : /opt/app/musician.js,violin
+1127348de6893785b7b5f7683dad683f8adc96f2b3139b460cc6df477c48e0be : /opt/app/musician.js,violin
+49880f2f76d8fae20b2ae5a59a28b4079e11099c2018167e991d1a1733e0824a : /opt/app/musician.js,drum
+81d6c8d7faf3337e6abd8c365f73b17eb3d9185b135a8ee3999ef3566826d7e8 : /opt/app/musician.js,flute
+701c73a912199c519419cc31203fd5092c164ffdb4c4919289aeaef897911646 : /opt/app/musician.js,violin
+266c7455d860ba6d9e0633410824a845ed5fada34cdc7ab58ea492078fcce025 : /opt/app/musician.js,drum
+9d08ea0199a55825d27ff58a63e4a547e967d572ec3370930f27958d4a6331a0 : /opt/app/musician.js,piano
+f399df25b6b92f037486d9192a74d5f1d824e89018d5dc7acc8776f4ffcdec61 : /opt/app/auditor.js
+Auditor validation: success: ["drum","drum","flute","flute","piano","trumpet","trumpet","violin","violin","violin"]
+There are 10 musicians, let's kill one
+killed 266c7455d860ba6d9e0633410824a845ed5fada34cdc7ab58ea492078fcce025
+Auditor validation: success: ["drum","flute","flute","piano","trumpet","trumpet","violin","violin","violin"]
+Scheduling a new test
+There are 9 musicians, let's kill one
+killed 760ab28b106a8ad647f7ac2899fa8db45770c2d3539a93b8386ea41f82f8dc99
+Auditor validation: success: ["drum","flute","flute","piano","trumpet","violin","violin","violin"]
+Scheduling a new test
+There are 8 musicians, let's kill one
+killed 7271726f93a5051ef1caf9a6f2921cc3405637f6a4942040c29d273366e43ad6
+Auditor validation: success: ["drum","flute","flute","piano","trumpet","violin","violin"]
+Scheduling a new test
+There are 7 musicians, let's kill one
+killed 701c73a912199c519419cc31203fd5092c164ffdb4c4919289aeaef897911646
+Auditor validation: success: ["drum","flute","flute","piano","trumpet","violin"]
+Scheduling a new test
+We have done all tests.

@@ -49,7 +49,7 @@ function Musician(instrument) {
         Encapsulation du payload dans un datagrame et envoie à l'adresse multicast
          */
         const message = new Buffer(payload);
-        socket.send(message, 0, message.length, protocol.PROTOCOL_PORT, protocol.PROTOCOL_MULTICAST_ADDRESS, function(err, bytes) {
+        socket.send(message, 0, message.length, protocol.PROTOCOL_PORT, protocol.PROTOCOL_MULTICAST_ADDRESS, (err, bytes) => {
             console.log("Sending payload: " + payload + " via port " + socket.address().port);
         });
 
