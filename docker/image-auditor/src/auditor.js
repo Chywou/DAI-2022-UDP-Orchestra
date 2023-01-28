@@ -23,9 +23,8 @@ socket.bind(protocol.PROTOCOL_PORT , function() {
 // fonction appelée quand un datagramme est reçu
 socket.on('message', function(msg, source) {
 	console.log("Data has arrived: " + msg + ". Source IP: " + source.address +
-				". Source port: " + source.port});
-	const music = JSON.parse(msg);
-	let date = new Date().toJSON();
-	
-				
+				". Source port: " + source.port);
 });
+
+const music = JSON.parse(msg);
+let date = new Date().toJSON();
