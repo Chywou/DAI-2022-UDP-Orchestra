@@ -106,7 +106,7 @@ Reminder: answer the following questions [here](https://forms.gle/6SM7cu4cYhNsRv
 | #        | Topic                                                                                                                                                                   |
 | -------- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Question | How can we represent the system in an **architecture diagram**, which gives information both about the Docker containers, the communication protocols and the commands? |
-|          | _Insert your diagram here..._                                                                                                                                           |
+|          | ![diagrameArchitecture](images/orchestraArchitecture.jpg)                                                                                                               |
 | Question | Who is going to **send UDP datagrams** and **when**?                                                                                                                    |
 |          | Les musiciens envoient des datagrammes UDP toutes les secondes.                                                                                                         |
 | Question | Who is going to **listen for UDP datagrams** and what should happen when a datagram is received?                                                                        |
@@ -114,7 +114,7 @@ Reminder: answer the following questions [here](https://forms.gle/6SM7cu4cYhNsRv
 | Question | What **payload** should we put in the UDP datagrams?                                                                                                                    |
 |          | Le son de l'instrument joué par le musiciens envoyant le datagramme ainsi que son uuid.                                                                                 |
 | Question | What **data structures** do we need in the UDP sender and receiver? When will we update these data structures? When will we query these data structures?                |
-|          | Sender/Receiver : un tableau associatif entre un instrument et son son. Pas de mise à jour à faire ici.<br/> Receiver : la lise des musiciens (UID, instrument, timer)  |
+|          | Sender/Receiver : un tableau associatif entre un instrument et son son. Pas de mise à jour à faire ici.<br/> Receiver : une map des musiciens (UID, instrument, date)   |
 
 ## Task 2: implement a "musician" Node.js application
 
@@ -125,17 +125,17 @@ Reminder: answer the following questions [here](https://forms.gle/6SM7cu4cYhNsRv
 | Question | What is **npm**?                                                                                                                                                                                                                |
 |          | npm (Node Package Manager) est un gestionnaire de paquets pour JavaScript.                                                                                                                                                      |
 | Question | What is the `npm install` command?                                                                                                                                                                                              |
-|          | Cette commande permet d'installer automatiquement toutes les dépendances pour un projet. Cette commande permet également de télécharger un paquage précis.                                                                                                                                            |
+|          | Cette commande permet d'installer automatiquement toutes les dépendances pour un projet. Cette commande permet également de télécharger un paquage précis.                                                                      |
 | Question | How can we use the `https://www.npmjs.com/` web site?                                                                                                                                                                           |
 |          | Il permet de chercher des paquages et leur documentation.                                                                                                                                                                       |
 | Question | In JavaScript, how can we **generate a UUID** compliant with RFC4122?                                                                                                                                                           |
-|          | En utilisant le paquage `https://www.npmjs.com/package/uuid`.                                                                                                                                                                   |
+|          | En utilisant le paquage `https://www.npmjs.com/package/uuid` et la fonction `uuid.v4()`.                                                                                                                                        |
 | Question | In Node.js, how can we execute a function on a **periodic** basis?                                                                                                                                                              |
-|          | En utilisant setInterval() qui permet de lancer une méthode toutes les x ms spécifiés.                                                                                                                                                                                                      |
+|          | En utilisant `setInterval()` qui permet de lancer une méthode toutes les x ms spécifiés.                                                                                                                                          |
 | Question | In Node.js, how can we **emit UDP datagrams**?                                                                                                                                                                                  |
-|          | Utiliser dgram, puis en créant un socket UDP avec dgram.createSocket('udp4'). Depuis le socket, on peut envoyer un datagtame via la méthode send().                                                                                                                                                                                                                |
+|          | Utiliser dgram, puis en créant un socket UDP avec `dgram.createSocket('udp4')`. Depuis le socket, on peut envoyer un datagtame via la méthode `send()`.                                                                             |
 | Question | In Node.js, how can we **access the command line arguments**?                                                                                                                                                                   |
-|          | Utiliser process.argv qui est un tableau contenant les arguments de la ligne de commande. Les deux premier éléments possèdent des informations sur des paths. Pour accéder à notre instrument il faut utiliser process.argv[2]. |                                                                         |
+|          | Utiliser `process.argv` qui est un tableau contenant les arguments de la ligne de commande. Les deux premier éléments possèdent des informations sur des paths. Pour accéder à notre instrument il faut utiliser `process.argv[2]`. |                                                                         |
 
 ## Task 3: package the "musician" app in a Docker image
 

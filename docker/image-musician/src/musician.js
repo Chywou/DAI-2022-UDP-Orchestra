@@ -62,4 +62,4 @@ function Musician(instrument) {
 
 }
 
-var musician = new Musician(process.argv[2]);
+new Musician(process.argv[2]);
